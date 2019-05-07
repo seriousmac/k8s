@@ -67,9 +67,10 @@ ref: https://cloud.google.com/kubernetes-engine/kubernetes-comic/?authuser=2 <br
     - 긴밀하게 결합된 프로세스들이 하나의 포드를 공유하는 경우도 있음
     - 포드에는 실행 중인 프로세스가 포함되어 있음.
     - 서버 또는 노드가 포드를 제공
-    - 노드ㅣ 포드 그룹이 단일 머신에 함께 배치됨. (=이전에는 '미니언'이라고 함)
+    - 포드 그룹이 단일 머신에 함께 배치됨. (=이전에는 '미니언'이라고 함)
     - 노드가 클러스터로 그룹화 됨
     - 각각의 클러스터는 마스터 노드가 감독
+  - 배포(Deployment)
     - 이러한 클러스터는 간단한 .yaml 파일을 이용하여 선언하는 배포를 통해 배치됨
     - 요청을 수행하기 위해 가동하고 싶은 프로세스의 이상적인 조합을 명시
     - 컨테이너 레지스트리에서 컨테이너 이미지를 노드로 끌어옴
@@ -78,6 +79,7 @@ ref: https://cloud.google.com/kubernetes-engine/kubernetes-comic/?authuser=2 <br
       - 머신의 motherboard, os, ip, ... 고민할 필요X
     - 상호 호환되는(interchangable) 컨테이너 복제본(container replicas)과 상호 호환되는 머신을 통해 kubernetes는 각각의 복제본을 적절한 위치에 배치할 수 있음
     - kubernetes는 보다 효율적인 '적재(bin packing)'방법을 모색함.
+  - 관리
     - kubernetes는 자가 복구(self-healing)를 합니다.
       - 마스터 노드와 여러 개의 작업자 노드가 포함된 클러스터를 확인
       - 실제 운영 환경에서의 포드 및 클러스터 상태와 열심히 비교
