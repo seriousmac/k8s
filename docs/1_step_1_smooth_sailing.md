@@ -49,7 +49,7 @@ ref: https://cloud.google.com/kubernetes-engine/kubernetes-comic/?authuser=2 <br
   - 이 모든 것을 **전 세계 어디서나 언제든지** 실현 가능
   - 확장하면 어떻게 다 추적해? -> k8s를 사용하면, 모든 컨테이너가 **자동화**
 
-- 장면 43
+- 장면 43~48
   - Kubernetes의 주요 목표
     - 컨테이너를 논리적(Logical)이고 효율적인(Efficient) 방식으로 분산하는 것
     - 이미 진행 중인 작업에 맞춰 신속하게(Face) 확장(Scale up) 또는 축소하는 것
@@ -57,6 +57,32 @@ ref: https://cloud.google.com/kubernetes-engine/kubernetes-comic/?authuser=2 <br
     - **작업에 대한 통제력을 갖는 것** (To give you power over **WHAT** gets done)
     - 행복한 주말 (Withour forcing you to micro-manage **HOW**)
     
-
+- 장면 49:
+  - Pod
+    - 컨테이너 관리를 위한 새로운 수준의 추상화
+    - Kubernetes 객체 모델에서 가장 작은 구성 요소
+    - Pod는 Container를 '본다'.
+    - 컨테이너식 프로세스는 보이지 않지만, k8s는 포드만 본다!
+    - 대부분의 포드에는 단 하나의 프로세스만 포함되어 있음 (=ingleton Pod)
+    - 긴밀하게 결합된 프로세스들이 하나의 포드를 공유하는 경우도 있음
+    - 포드에는 실행 중인 프로세스가 포함되어 있음.
+    - 서버 또는 노드가 포드를 제공
+    - 노드ㅣ 포드 그룹이 단일 머신에 함께 배치됨. (=이전에는 '미니언'이라고 함)
+    - 노드가 클러스터로 그룹화 됨
+    - 각각의 클러스터는 마스터 노드가 감독
+    - 이러한 클러스터는 간단한 .yaml 파일을 이용하여 선언하는 배포를 통해 배치됨
+    - 요청을 수행하기 위해 가동하고 싶은 프로세스의 이상적인 조합을 명시
+    - 컨테이너 레지스트리에서 컨테이너 이미지를 노드로 끌어옴
+    - kubernetes에서 머신을 선택하고 배포 시 지정된 컨테이너 이미지를 끌어내려 각 포드에 컨테이너를 전파
+    - kubernetes의 추상화된 인프라가 제공하는 장점: 프로세스가 어떤 '머신'에서 수행되는지 중요하지 않음.
+      - 머신의 motherboard, os, ip, ... 고민할 필요X
+    - 상호 호환되는(interchangable) 컨테이너 복제본(container replicas)과 상호 호환되는 머신을 통해 kubernetes는 각각의 복제본을 적절한 위치에 배치할 수 있음
+    - kubernetes는 보다 효율적인 '적재(bin packing)'방법을 모색함.
+    - kubernetes는 자가 복구(self-healing)를 합니다.
+      - 마스터 노드와 여러 개의 작업자 노드가 포함된 클러스터를 확인
+      - 실제 운영 환경에서의 포드 및 클러스터 상태와 열심히 비교
+    - 연속적인 업데이트를 통해 안정적이고 원활한 전환이 가능
+    - 각 노드마다 3개의 어플리케이션이 실행중, A, B, C라고 라벨이 지정되어 있음.
+    - 모듈화와 불변성을 통해 지속적인 통합이 가능하듯이, 컨테이너와 Kubernetes는 지속적인 배포를 실현하고 있음.
     
     
